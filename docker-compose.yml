@@ -13,6 +13,3 @@ services:
       MYSQL_DATABASE: employee_db
       MYSQL_USER: appuser
       MYSQL_PASSWORD: password123
-    ports:
-      - "3307:3306"
-
