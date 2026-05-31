@@ -2,23 +2,20 @@ pipeline {
    agent any
 
    stages {
-     stage('Check Files') {
+     stage('Show Files') {
        steps {
 	sh 'ls -la'
 	}
       }
     
-      stage('Check Python Files'){
+      stage('Build Docker Image'){
 	steps {
-	  sh 'cat app.py'
-	  sh 'cat requirements.txt'
+	  sh 'docker build -t employee-app-ci .'
        }
      }
-      stage('Basic Validation'){
+      stage('Verify Image'){
 	steps {
-	   sh 'test -f Dockerfile'
-           sh 'test -f docker-compose.yml'
-           sh 'echo "Basic validation passed"'
+	   sh 'docker images | grep employee-app-ci'
          }
        }
    }
