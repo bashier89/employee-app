@@ -1,0 +1,4 @@
+venv/
+backup_*.sql
+__pycache__/
+*.pyc
