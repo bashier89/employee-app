@@ -18,6 +18,16 @@ pipeline {
 	   sh 'docker images | grep employee-app-ci'
          }
        }
+      stage('Deploy with Docker Compose'){
+	steps {
+	   sh 'docker compose up -d --build'
+	}
    }
- }
+      stage('Verify Containers'){
+	steps {
+	   sh 'docker ps'
+	}	
+     }
+   }
+}
 
